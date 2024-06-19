@@ -15,7 +15,7 @@
         "clue/term-react": "^1.0 || ^0.1.1",
         "clue/utf8-react": "^1.0 || ^0.1",
         "react/event-loop": "^1.2",
-        "react/stream": "^1.2"
+        "react/stream": "^1.4"
     },
     "require-dev": {
         "clue/arguments": "^2.0",

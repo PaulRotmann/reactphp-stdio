@@ -53,6 +53,51 @@ class StdioTest extends TestCase
         $this->assertSame($readline, $stdio->getReadline());
     }
 
+    public function testCtorThrowsExceptionForInvalidLoop()
+    {
+        $input = $this->getMockBuilder('React\Stream\ReadableStreamInterface')->getMock();
+        $output = $this->getMockBuilder('React\Stream\WritableStreamInterface')->getMock();
+
+        //$readline = $this->getMockBuilder('Clue\React\Stdio\Readline')->disableOriginalConstructor()->getMock();
+        $readline = new Readline($input, $output);
+
+        $this->setExpectedException('InvalidArgumentException', 'Argument #1 ($loop) expected null|React\EventLoop\LoopInterface');
+        new Stdio('invalid', $input, $output, $readline);
+    }
+
+    public function testCtorThrowsExceptionForInvalidInput()
+    {
+        $input = $this->getMockBuilder('React\Stream\ReadableStreamInterface')->getMock();
+        $output = $this->getMockBuilder('React\Stream\WritableStreamInterface')->getMock();
+
+        //$readline = $this->getMockBuilder('Clue\React\Stdio\Readline')->disableOriginalConstructor()->getMock();
+        $readline = new Readline($input, $output);
+
+        $this->setExpectedException('InvalidArgumentException', 'Argument #2 ($input) expected null|React\Stream\ReadableStreamInterface');
+        new Stdio($this->loop, 'invalid', $output, $readline);
+    }
+
+    public function testCtorThrowsExceptionForInvalidOutput()
+    {
+        $input = $input = $this->getMockBuilder('React\Stream\ReadableStreamInterface')->getMock();
+        $output = $this->getMockBuilder('React\Stream\WritableStreamInterface')->getMock();
+
+        //$readline = $this->getMockBuilder('Clue\React\Stdio\Readline')->disableOriginalConstructor()->getMock();
+        $readline = new Readline($input, $output);
+
+        $this->setExpectedException('InvalidArgumentException', 'Argument #3 ($output) expected null|React\Stream\WritableStreamInterface');
+        new Stdio($this->loop, $input, 'invalid', $readline);
+    }
+
+    public function testCtorThrowsExceptionForInvalidReadline()
+    {
+        $input = $input = $this->getMockBuilder('React\Stream\ReadableStreamInterface')->getMock();
+        $output = $this->getMockBuilder('React\Stream\WritableStreamInterface')->getMock();
+
+        $this->setExpectedException('InvalidArgumentException', 'Argument #4 ($readline) expected null|Clue\React\Stdio\Readline');
+        new Stdio($this->loop, $input, $output, 'invalid');
+    }
+
     public function testWriteEmptyStringWillNotWriteToOutput()
     {
         $input = $this->getMockBuilder('React\Stream\ReadableStreamInterface')->getMock();

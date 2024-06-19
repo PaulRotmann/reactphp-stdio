@@ -23,6 +23,12 @@ class ReadlineTest extends TestCase
         $this->readline = new Readline($this->input, $this->output);
     }
 
+    public function testCtorThrowsExceptionForInvalidBase()
+    {
+        $this->setExpectedException('InvalidArgumentException', 'Argument #3 ($base) expected null|Evenement\EventEmitterInterface');
+        new Readline($this->input, $this->output, 'invalid');
+    }
+
     public function testSettersReturnSelf()
     {
         $this->assertSame($this->readline, $this->readline->setEcho(true));
