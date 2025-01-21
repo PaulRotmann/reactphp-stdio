@@ -643,7 +643,7 @@ This project follows [SemVer](https://semver.org/).
 This will install the latest supported version:
 
 ```bash
-composer require clue/stdio-react:^2.6
+composer require clue/stdio-react:^2.7
 ```
 
 See also the [CHANGELOG](CHANGELOG.md) for details about version upgrades.

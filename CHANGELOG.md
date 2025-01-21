@@ -1,5 +1,22 @@
 # Changelog
 
+## 2.7.0 (2025-01-24)
+
+*   Feature: Improve PHP 8.4+ support by avoiding implicitly nullable types.
+    (#107 by @SimonFrings and #109 by @clue)
+
+*   Feature: Run tests on PHP 8.3 and update test suite.
+    (#106 by @yadaiio)
+
+*   Feature: Test on PHP 8.2 and update test environment.
+    (#103 by @clue)
+
+*   Fix legacy HHVM build and update test suite to ensure 100% code coverage.
+    (#102 by @SimonFrings and #108 by @clue)
+
+*   Minor documentation improvements.
+    (#105 by @yadaiio)
+
 ## 2.6.0 (2022-03-18)
 
 *   Feature: Full support for PHP 8.1 release.
